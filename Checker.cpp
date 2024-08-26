@@ -29,7 +29,7 @@ bool ChargeRateIsOk(float chargeRate)
 bool batteryIsOk(float temperature, float soc, float chargeRate)
 {
   bool temperatureOk = isArgumentsinRange(temperature,0,45,"Temperature ");
-  bool socOk = isArgumentsinRange(soc,0,45,"Soc ");
+  bool socOk = isArgumentsinRange(soc,20,85,"State of charge ");
   bool ChargeRateOk = ChargeRateIsOk(chargeRate);
 
   return temperatureOk && socOk && ChargeRateOk;
