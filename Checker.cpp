@@ -2,6 +2,12 @@
 #include <iostream>
 using namespace std;
 
+bool isMax(float value,float maxThreshold){
+    if(value > maxThreshold){
+        return true;
+    }
+    return false;
+}
 bool isArgumentsinRange(float value, float min,float max,const string& argument)
 {
     if (value < min)
@@ -9,7 +15,7 @@ bool isArgumentsinRange(float value, float min,float max,const string& argument)
       cout<< argument << "too low.\n";
       return false;
     }
-    else if (value > max)
+    else if (isMax(value,max)
     {
       cout<< argument << "too high.\n";
       return false;
@@ -19,7 +25,7 @@ bool isArgumentsinRange(float value, float min,float max,const string& argument)
 
 bool ChargeRateIsOk(float chargeRate)
 {
-  if(chargeRate>0.8)
+  if(isMax(chargeRate,0.8)
   {
     cout<<"Charge Rate out of range";
     return false;
