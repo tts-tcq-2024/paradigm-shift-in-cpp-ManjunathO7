@@ -1,1 +1,11 @@
-
+﻿TEST_CASE_ID,Temperature,State of Charge (SoC),Charge Rate,"EXPECTED OUTPUT/
+PRINT MESSEAGES",WARNINGS,Function Return Value
+TC_01,25,40,0.4,No Output,No warnings,TRUE
+TC_02,50,40,0.4,Temperature is out of range,No warnings,FALSE
+TC_03,25,85,0.6,SOC is out of range,No warnings,FALSE
+TC_04,40,50,0.9,Charge Rate  is out of range,No warnings,FALSE
+TC_05,50,81,0.9,"Temperature is out of range,SOC is out of range,Charge Rate  is out of range
+",No warnings,FALSE
+TC_06,44,40,0.4,No Output,"Temperature is approching
+ peak limit",TRUE
+TC_07,50,77,0.7,No Output,SOC  is approching peak limit,TRUE
