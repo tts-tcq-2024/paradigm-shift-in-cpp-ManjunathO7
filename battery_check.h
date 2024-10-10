@@ -6,6 +6,8 @@
 using namespace std;
 
 bool batteryCheck(float temperature, float soc, float chargeRate);
-void printWarnings(const RangeResult& temperatureResult, const RangeResult& socResult, const RangeResult& chargeRateResult);
+void printTemperatureWarning(const RangeResult& temperatureResult);
+void printSocWarning(const RangeResult& socResult);
+void printChargeRateWarning(const RangeResult& chargeRateResult);
 
 #endif
