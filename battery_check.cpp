@@ -8,18 +8,24 @@ bool batteryCheck(float temperature, float soc, float chargeRate) {
     RangeResult socResult = isParametersinRange(soc, 20, 80, "State of charge ");
     RangeResult chargeRateResult = isChargeRateOk(chargeRate);
     
-    printWarnings(temperatureResult, socResult, chargeRateResult);
-    
+    printTemperatureWarning(temperatureResult);
+    printSocWarning(socResult);
+    printChargeRateWarning(chargeRateResult);
+
     return temperatureResult.inRange && socResult.inRange && chargeRateResult.inRange;
 }
-
-void printWarnings(const RangeResult& temperatureResult, const RangeResult& socResult, const RangeResult& chargeRateResult) {
+void printTemperatureWarning(const RangeResult& temperatureResult){
     if (!temperatureResult.message.empty()) {
         cout << temperatureResult.message;
     }
+}
+void printSocWarning(const RangeResult& socResult){
     if (!socResult.message.empty()) {
         cout << socResult.message;
     }
+}
+void printChargeRateWarning(const RangeResult& chargeRateResult)
+{
     if (!chargeRateResult.message.empty()) {
         cout << chargeRateResult.message;
     }
