@@ -18,6 +18,13 @@ void checkWarning(float value, float min, float max, const string& argument, str
         message += "Warning: " + argument + " approaching peak-charge limit.\n";
     }
 }
+void checkWarningForCharge(float value,float max, const string& argument, string& message){
+    float tolerance = 0.05 * max;
+    bool max_threshold = findHighThreshold(value, max, tolerance);
+    if(max_threshold) {
+            message += "Warning: " + argument + " approaching peak-charge limit.\n";
+    }
+}
 
 RangeResult isParametersinRange(float value, float min, float max, const string& argument) {
     RangeResult result;
@@ -39,7 +46,7 @@ RangeResult isChargeRateOk(float chargeRate) {
     RangeResult result;
     result.inRange = true;
     result.message = "";
-    checkWarning(chargeRate, 0, 0.8, "Charge Rate ", result.message);
+    checkWarningForCharge(chargeRate, 0.8, "Charge Rate ", result.message);
     if (isMax(chargeRate, 0.8)) {
         result.message += "Charge Rate out of range.\n";
         result.inRange = false;
